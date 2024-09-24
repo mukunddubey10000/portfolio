@@ -1,0 +1,88 @@
+.Hero-Root-Container {
+    /* background-color: black; */
+    min-height: 100vh;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 80%;
+    margin: 1rem auto 0 auto;
+    padding: 1rem;
+    /* background-position: center; */
+    position: absolute;
+    left: 10%;
+}
+
+.left-hero-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 7rem;
+    justify-content: center;
+}
+
+.right-hero-container {
+
+}
+
+.intro-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 6vw;
+    width: fit-content;
+    letter-spacing: 1.25vw;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgb(226, 218, 218);
+}
+.intro-text-description {
+    padding: 0rem;
+    font-size: 1.75vw !important;
+    letter-spacing: normal;
+    color: white;
+}
+.tech-stack-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.tech-stack-container>span{
+    color: white;
+    font-size: 1.5vw;
+}
+.tech-stack-container>img{
+    height: 2rem;
+    width: 2rem;
+    margin-top: 0;
+    /* margin-left: 1rem; */
+    /* padding: 1rem; */
+    animation: hero-tech-stack-images linear;
+    animation-timeline: scroll(y);
+    overflow: hidden;
+}
+
+@keyframes hero-tech-stack-images {
+    0% {opacity: 1; margin-left: 6rem;}
+    75% {opacity: 0; margin-left: 0rem}
+    /* 0% {opacity: 1; transform: translateX(0);}
+    75% {opacity: 0; transform: translateX(-10);} */
+}
+
+.tech-stack-container>img:hover{
+    /* height: 2.25rem; */
+    /* width: 2.25rem; */ /*Don't use this otherwise layout is affected. Use transform*/
+    transform: scale(1.25);
+    transition: all 0.3s ease-out;
+    overflow: hidden;
+}
+
+.hero-background-image{
+    border-radius: 1rem;
+    animation: hero-background-image-fade linear;
+    animation-timeline: scroll();
+}
+
+@keyframes hero-background-image-fade{
+    /* Instead of directly using scale: 1 to scale: 5 use scale() to avoid 
+        recalculating layout
+    */
+    0% {transform: zoom(0); opacity: 0.7; filter: blur(0px); }
+    90% {transform: zoom(100%); opacity: 0.1; filter: blur(100px);}
+    100% {transform: zoom(0); opacity: 0.1; filter: blur(100px);}
+}

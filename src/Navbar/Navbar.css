@@ -1,0 +1,29 @@
+.Navbar-container {
+    /* background-color: #30D7FB; */
+    background: linear-gradient(to right,#90BCC2, #30D7FB);
+    border-width: 1rem;
+    border-color: red;
+    height: fit-content;
+    padding: 1rem;
+
+    display: flex;
+    position: fixed;
+    z-index: 1;
+    left: 10%; /*width is 80% so left is 10% & remaining right will be 10%*/
+    justify-content: space-between;
+    align-items: center;
+    width: 80vw;
+    border-radius: 1rem;
+    text-align: center;
+    
+    margin: 1rem auto 0 auto; /* Alone centers div => (top, right, bottom, left) */
+    /* For centering a div. Use just margin: auto to make it centerd in all axis */
+
+}
+
+.Navbar-container>span{
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-top: 0;
+}

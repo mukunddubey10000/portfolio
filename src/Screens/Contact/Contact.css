@@ -1,0 +1,42 @@
+.Contact-Container{
+    flex: 1;
+    min-height: 60vh;
+    margin-top: 10rem;
+    width: 80vw;
+    margin: 0rem auto 0 10vw;
+    padding: 1rem;
+    background-color: #1d2026;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    animation: card-fading-animation linear;
+    animation-timeline: view(100% 0vh);
+}
+
+.Contact-Container:hover{
+    transition: 0.35s ease-out;
+    box-shadow: 0px 14px 28px rgba(255,255,255,0.15), 0 10px 10px rgba(221, 255, 255, 0.25);
+}
+.Contact-left-container {
+    padding: 5rem;
+}
+.Contact-left-container>span{
+    color: white;
+    font-size: 2vw;
+}
+
+.Contact-left-container>div>img{
+    border-radius: 10rem;
+    padding: 1rem;
+}
+.Contact-left-container>div>img:hover{
+    transform: scale(1.25);
+    transition: 0.35s ease;
+    background-image: radial-gradient(rgb(31, 31, 31), rgb(38, 34, 45), rgb(70, 70, 101));
+}
+
+.Contact-right-container{
+    padding: 1rem 1rem 1rem 0;
+}
