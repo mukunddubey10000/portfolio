@@ -43,23 +43,26 @@ const Experience = () => {
     }
 
     return (
-        <div className='Experience-Container' id="Experience">
-            <div className='card-container-experience'>
-                <div className='left-container-experience'>
-                    <span>SDE 1, Coinswitch</span>
-                    <span>Backend For Frontend(BFF) architecture, also known as Server Driven UI.</span>
-                    <span>Used NewRelic for on-call purposes.</span>
-                    <div style={{ marginTop: '1rem' }} />
-                    {
-                        cardsTitle.map(ele => {
-                            const Parent = () => <span>{ele}</span>
-                            const Children = () => Children_component_mapper[ele]
-                            return <Accordion Parent={Parent} Children={Children} id={"Boost"} />
-                        })
-                    }
-                </div>
-                <div className='right-container-experience'>
-                    {[..."EXPERIENCE".split('')].map(character => <span>{character}</span>)}
+        <div id="Experience">
+            <div style={{ marginTop: '10rem' }} />
+            <div className='Experience-Container'>
+                <div className='card-container-experience'>
+                    <div className='left-container-experience'>
+                        <span>SDE 1, Coinswitch</span>
+                        <span>Backend For Frontend(BFF) architecture, also known as Server Driven UI.</span>
+                        <span>Used NewRelic for on-call purposes.</span>
+                        <div style={{ marginTop: '1rem' }} />
+                        {
+                            cardsTitle.map(ele => {
+                                const Parent = () => <span>{ele}</span>
+                                const Children = () => Children_component_mapper[ele]
+                                return <Accordion Parent={Parent} Children={Children} id={"Boost"} />
+                            })
+                        }
+                    </div>
+                    <div className='right-container-experience'>
+                        {[..."EXPERIENCE".split('')].map(character => <span>{character}</span>)}
+                    </div>
                 </div>
             </div>
         </div>

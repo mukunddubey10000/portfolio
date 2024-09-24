@@ -15,11 +15,11 @@ const Navbar = ({ }) => {
 
     return (
         <div className='Navbar-container' onMouseEnter={() => handleMouseEnter()} onMouseLeave={() => handleMouseLeave()}>
-            <span onClick={() => window.scrollTo({ top: document.querySelector('#Home'), behavior: 'smooth' })}>Home</span>
-            <span onClick={() => window.scrollTo({ top: document.querySelector('#Experience'), behavior: 'smooth' })}>Experience</span>
-            <span>Projects</span>
-            <span>Achievements</span>
-            <span>Contact</span>
+            <li><a href="#Home">Home</a></li>
+            <li><a href="#Experience">Experience</a></li>
+            <li><a href="#Projects">Projects</a></li>
+            <li><a href="#Achievements">Achievements</a></li>
+            <li><a href="#Contact">Contact</a></li>
         </div>
     )
 }

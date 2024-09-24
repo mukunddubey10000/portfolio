@@ -3,9 +3,14 @@
   font-family: 'Roboto', sans-serif;
   scrollbar-color: #30D7FB grey;
   scrollbar-width: thin;
+  text-decoration: none;       /*to remove underline from any ancor tags*/
 }
 .App{
   display: flex;
   background-color: black;
   flex-direction: column;
+}
+
+html {
+  scroll-behavior: smooth;
 }

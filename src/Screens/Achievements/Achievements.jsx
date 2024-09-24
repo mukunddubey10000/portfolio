@@ -26,19 +26,22 @@ const Achievements = () => {
     const images = [undefined, icpc_icon, leetcode_icon, codechef_icon];
 
     return (
-        <div className='Achievement-Container' id="Achievement">
-            <div className='left-container-achievement'>
+        <div id="Achievements">
+            <div style={{ marginTop: '10rem' }} />
+            <div className='Achievement-Container'>
+                <div className='left-container-achievement'>
 
-            </div>
-            <div className='right-container-achievement'>
-                {achievements.map((ele, index) => {
-                    const Parent = () => (<div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span>{ele}</span>
-                        {images?.[index] && <img src={images[index]} height={30} width={'auto'} style={{ marginLeft: '15px' }} />}
-                    </div>)
-                    const Children = () => (<span>{achievements_description?.[ele]}</span>)
-                    return (<Accordion Parent={Parent} Children={Children} />)
-                })}
+                </div>
+                <div className='right-container-achievement'>
+                    {achievements.map((ele, index) => {
+                        const Parent = () => (<div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span>{ele}</span>
+                            {images?.[index] && <img src={images[index]} height={30} width={'auto'} style={{ marginLeft: '15px' }} />}
+                        </div>)
+                        const Children = () => (<span>{achievements_description?.[ele]}</span>)
+                        return (<Accordion Parent={Parent} Children={Children} />)
+                    })}
+                </div>
             </div>
         </div>
     )
