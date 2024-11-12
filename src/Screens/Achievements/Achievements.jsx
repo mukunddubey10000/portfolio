@@ -30,7 +30,7 @@ const Achievements = () => {
             <div style={{ marginTop: '10rem' }} />
             <div className='Achievement-Container'>
                 <div className='left-container-achievement'>
-
+                    {[..."ACHIEVEMENTS".split('')].map(character => <span>{character}</span>)}
                 </div>
                 <div className='right-container-achievement'>
                     {achievements.map((ele, index) => {

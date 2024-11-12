@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import './Hero.css'
 import html_icon from '../assets/html_icon.png'
 import css_icon from '../assets/css_icon.png'
@@ -8,8 +8,63 @@ import react_icon from '../assets/react_icon.png'
 import hero_background from '../assets/background.jpg'
 import store from '../store'
 import { setCursorVariant } from '../Mouse/mouseUtils'
+import { useEffect } from 'react'
 
 function Hero() {
+
+    const backgroundRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                entry.target.classList.toggle("show", entry.isIntersecting);
+            });
+        });
+
+        const background_observer = new IntersectionObserver((ele) => {
+            ele.forEach(entry => entry.target.classList.toggle("show", entry.isIntersecting));
+        })
+
+        const animate_elements = document.querySelectorAll([".tech-stack-container"]); //select multiple
+        animate_elements.forEach((ele) => observer.observe(ele));
+
+        const animate_background = document.querySelector([".hero-background-image"]); //select single DOM ele
+        background_observer.observe(animate_background);
+
+        // Cleanup observer on unmount
+        return () => {
+            animate_elements.forEach((ele) => observer.unobserve(ele));
+            background_observer.unobserve(animate_background);
+        };
+    }, []);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (backgroundRef.current) {
+                const scrollPosition = window.scrollY;
+                const maxScroll = document.body.scrollHeight - window.innerHeight;
+                const scrollFraction = scrollPosition / maxScroll;
+
+                // Adjust the properties of the background image based on scroll position
+                const scale = 1 + scrollFraction * 0.5; // Scale from 1 to 1.5
+                const zoom = 100 + scrollFraction * 100; // Zoom from 100% to 150%
+                const opacity = 0.5 + scrollFraction * 0.1; // Opacity from 0.5 to 1
+                const blur = scrollFraction * 10; // Blur from 0 to 10px
+
+                backgroundRef.current.style['background-size'] = `${zoom}%`;
+                backgroundRef.current.style.opacity = `${opacity}`;
+                backgroundRef.current.style.filter = `blur(${blur}px)`;
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        // Cleanup scroll event listener on unmount
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     const handleMouseEnter = () => {
         return store.dispatch(setCursorVariant("intro_text"));
     }
@@ -21,11 +76,8 @@ function Hero() {
         <>
             <img
                 className='hero-background-image'
-                src="https://img.freepik.com/premium-vector/beautiful-night-landscape-with-pine-forest-silhouette-moon_116220-63.jpg?w=996"
-                // src="https://img.freepik.com/free-vector/silhouette-shadow-forest-scene_1308-102219.jpg?t=st=1727121575~exp=1727125175~hmac=096079d6914521b9f7f1713671c5f73c0fad2cd1d364d2df777177a06800ebec&w=1060"
-                // height={'80%'}
-                // width={'100%'}
-                style={{ opacity: 0.5 }}
+                // src="https://img.freepik.com/premium-vector/beautiful-night-landscape-with-pine-forest-silhouette-moon_116220-63.jpg?w=996"
+                ref={backgroundRef}
             />
             <div className='Hero-Root-Container' id="Home">
                 <div className='left-hero-container'>
@@ -48,11 +100,11 @@ function Hero() {
 
                     <div className='tech-stack-container'>
                         <span className='tech-stack'>Tech Stack |</span>
-                        <img src={html_icon} alt="HTML" />
-                        <img src={css_icon} alt="CSS" />
-                        <img src={js_icon} alt="JS" />
-                        <img src={graphql_icon} alt="GraphQl" />
-                        <img src={react_icon} alt="React" />
+                        <img className='html-logo' src={html_icon} alt="HTML" />
+                        <img className='css-logo' src={css_icon} alt="CSS" />
+                        <img className='js-logo' src={js_icon} alt="JS" />
+                        <img className='graphql-logo' src={graphql_icon} alt="GraphQl" />
+                        <img className='react-logo' src={react_icon} alt="React" />
                     </div>
                 </div>
                 <div className='right-hero-container'>

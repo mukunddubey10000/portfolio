@@ -5,7 +5,7 @@ import Accordion from '../../Components/Accordion/Accordion'
 const Experience = () => {
     const cardsTitle = ["Boost Order", "Flipkart SuperCoins", "Coin Social Sentiment Tracker", "Realtime Rates"];
     const Children_component_mapper = {
-        "Boost Order": (<div className='accordion-description-container'>
+        "Boost Order V1": (<div className='accordion-description-container'>
             <div style={{ height: "0.35rem" }} />
             <span className='accordion-description'>A simplified version of Crypto Futures trading with long positions.</span>
             <span className='accordion-description'>Features such as auto-exit, manual exit, realtime updates,  portfolio, orders & history section, invoice download, performance improvements etc</span>
@@ -56,7 +56,7 @@ const Experience = () => {
                             cardsTitle.map(ele => {
                                 const Parent = () => <span>{ele}</span>
                                 const Children = () => Children_component_mapper[ele]
-                                return <Accordion Parent={Parent} Children={Children} id={"Boost"} />
+                                return <Accordion Parent={Parent} Children={Children} id={ele} />
                             })
                         }
                     </div>

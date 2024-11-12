@@ -1,88 +1,191 @@
 .Hero-Root-Container {
-    /* background-color: black; */
-    min-height: 100vh;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 1rem;
-    width: 80%;
-    /* margin: 1rem auto 0 auto; */
-    padding: 1rem;
-    /* background-position: center; */
-    position: absolute;
-    left: 10%;
+	/* background-color: black; */
+	min-height: 100vh;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 1rem;
+	width: 80%;
+	/* margin: 1rem auto 0 auto; */
+	padding: 1rem;
+	/* background-position: center; */
+	position: relative;
+	left: 10%;
 }
 
 .left-hero-container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 7rem;
-    justify-content: center;
+	display: flex;
+	flex-direction: column;
+	margin-top: 7rem;
+	justify-content: center;
 }
 
 .right-hero-container {
-
 }
 
 .intro-text {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 6vw;
-    width: fit-content;
-    letter-spacing: 1.25vw;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: rgb(226, 218, 218);
+	font-family: "Times New Roman", Times, serif;
+	font-size: 6vw;
+	width: fit-content;
+	letter-spacing: 1.25vw;
+	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-color: rgb(226, 218, 218);
 }
 .intro-text-description {
-    padding: 0rem;
-    font-size: 1.75vw !important;
-    letter-spacing: normal;
-    color: white;
+	padding: 0rem;
+	font-size: 1.75vw !important;
+	letter-spacing: normal;
+	color: white;
 }
-.tech-stack-container{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.tech-stack-container {
+	display: flex;
+	opacity: 0;
+	transition: all 1s;
 }
-.tech-stack-container>span{
-    color: white;
-    font-size: 1.5vw;
+.tech-stack-container.show {
+	opacity: 1;
+	display: flex;
+	gap: 1rem;
+	flex-direction: row;
+	align-items: center;
 }
-.tech-stack-container>img{
-    height: 2rem;
-    width: 2rem;
-    margin-top: 0;
-    /* margin-left: 1rem; */
-    /* padding: 1rem; */
-    animation: hero-tech-stack-images linear;
-    animation-timeline: scroll(y);
-    overflow: hidden;
+.tech-stack-container.show img:nth-child(1) {
+	animation: translate1 1s forwards;
+}
+.tech-stack-container.show img:nth-child(2) {
+	animation: translate2 1s forwards 0.2s;
+}
+.tech-stack-container.show img:nth-child(3) {
+	animation: translate3 1s forwards 0.4s;
+}
+.tech-stack-container.show img:nth-child(4) {
+	animation: translate4 1s forwards 0.6s;
+}
+.tech-stack-container.show img:nth-child(5) {
+	animation: translate5 1s forwards 0.8s;
+}
+.tech-stack-container.show img:nth-child(6) {
+	animation: translate6 1s forwards 1s;
+}
+
+@keyframes translate1 {
+	from {
+		opacity: 0;
+		transform: translateX(0);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(20px);
+	}
+}
+@keyframes translate2 {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(100px);
+	}
+}
+@keyframes translate3 {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(150px);
+	}
+}
+@keyframes translate4 {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(200px);
+	}
+}
+@keyframes translate5 {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(250px);
+	}
+}
+@keyframes translate6 {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(300px);
+	}
+}
+
+.tech-stack-container > span {
+	color: white;
+	font-size: 1.5vw;
+}
+.tech-stack-container > img {
+	height: 2rem;
+	width: 2rem;
+	margin-top: 0;
+	/* margin-left: 1rem; */
+	/* padding: 1rem; */
+	/* animation: hero-tech-stack-images linear; */
+	/* animation-timeline: scroll(y); */
+	/* Animation timeline is realitively new & doesn't support on all browsers */
+	overflow: hidden;
 }
 
 @keyframes hero-tech-stack-images {
-    0% {opacity: 1; margin-left: 6rem;}
-    75% {opacity: 0; margin-left: 0rem}
-    /* 0% {opacity: 1; transform: translateX(0);}
-    75% {opacity: 0; transform: translateX(-10);} */
+	from {
+		opacity: 1;
+		margin-left: 6rem;
+	}
+	to {
+		opacity: 0;
+		margin-left: 0rem;
+	}
+	/* 0% {opacity: 1; transform: translateX(0);}
+		75% {opacity: 0; transform: translateX(-10);} */
 }
 
-.tech-stack-container>img:hover{
-    /* height: 2.25rem; */
-    /* width: 2.25rem; */ /*Don't use this otherwise layout is affected. Use transform*/
-    transform: scale(1.25);
-    transition: all 0.3s ease-out;
-    overflow: hidden;
+.tech-stack-container > img:hover {
+	/* height: 2.25rem; */
+	/* width: 2.25rem; */ /*Don't use this otherwise layout is affected. Use transform*/
+	transform: scale(1.25);
+	transition: all 0.3s ease-out;
+	overflow: hidden;
 }
 
-.hero-background-image{
-    border-radius: 1rem;
-    animation: hero-background-image-fade linear;
-    animation-timeline: scroll();
+.hero-background-image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url("https://img.freepik.com/premium-vector/beautiful-night-landscape-with-pine-forest-silhouette-moon_116220-63.jpg?w=996");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+	opacity: 0.5;
+	transition: background-size 0.1s, opacity 0.1s, filter 0.1s; /* Ensure smooth transition */
 }
 
-@keyframes hero-background-image-fade{
-    /* Instead of directly using scale: 1 to scale: 5 use scale() to avoid 
-        recalculating layout
-    */
-    0% {transform: zoom(0); opacity: 0.7; filter: blur(0px); }
-    90% {transform: zoom(100%); opacity: 0.1; filter: blur(100px);}
-    100% {transform: zoom(0); opacity: 0.1; filter: blur(100px);}
+@keyframes hero-background-image-fade {
+	/* Instead of directly using scale: 1 to scale: 5 use scale() to avoid 
+			recalculating layout
+		*/
+	0% {
+		transform: zoom(0);
+		opacity: 0.7;
+		filter: blur(0px);
+	}
+	90% {
+		transform: zoom(100%);
+		opacity: 0.1;
+		filter: blur(100px);
+	}
+	100% {
+		transform: zoom(0);
+		opacity: 0.1;
+		filter: blur(100px);
+	}
 }
